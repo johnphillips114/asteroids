@@ -11,6 +11,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
+    current_num_lives = PLAYER_LIVES
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
@@ -44,6 +45,12 @@ def main():
                     asteroid.split()
                     
             if asteroid.check_collision(player):
+                current_num_lives -= 1
+                for living_asteroid in asteroids:
+                    living_asteroid.kill()
+                player.position = (SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+            
+            if current_num_lives <= 0:
                 print("Game over!")
                 print(f"Final score: {score.score}")
                 return
