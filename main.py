@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from score import Score
 from shot import Shot
 
 def main():
@@ -22,6 +23,7 @@ def main():
 
     player = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2, radius = PLAYER_RADIUS)
     asteroid_field = AsteroidField()
+    score = Score()
 
     while True:
         for event in pygame.event.get():
@@ -29,6 +31,7 @@ def main():
                 return
             
         screen.fill(color="black")
+        score.update(dt)
 
         for member in updatable:
             member.update(dt)
@@ -42,6 +45,7 @@ def main():
                     
             if asteroid.check_collision(player):
                 print("Game over!")
+                print(f"Final score: {score.score}")
                 return
 
         pygame.display.flip()
