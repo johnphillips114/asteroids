@@ -42,6 +42,7 @@ def main():
         for asteroid in asteroids:
             for shot in shots:
                 if asteroid.check_collision(shot):
+                    score.add_score(ASTEROID_POINT_VALUE)
                     asteroid.split()
                     
             if asteroid.check_collision(player):

@@ -4,3 +4,6 @@ class Score():
 
     def update(self, dt):
         self.score += (1 * dt)
+
+    def add_score(self, points):
+        self.score += points
