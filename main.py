@@ -53,7 +53,7 @@ def main():
             
             if current_num_lives <= 0:
                 print("Game over!")
-                print(f"Final score: {score.score}")
+                print(f"Final score: {int(score.score)}")
                 return
 
         pygame.display.flip()
